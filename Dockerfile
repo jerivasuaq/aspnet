@@ -7,5 +7,11 @@ RUN apt-get install -y vim
 RUN bash -c "source $DNX_USER_HOME/dnvm/dnvm.sh \
 	&& dnvm upgrade"
 
-ENTRYPOINT [/bin/bash]
+WORKDIR /app
+
+# Open this port in the container
+EXPOSE 5000
+
+#ENTRYPOINT ["dnx","-p","project.json", "web"]
+ENTRYPOINT ["/bin/bash"]
 
